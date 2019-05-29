@@ -32,26 +32,22 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'dotenv-rails'
 gem 'font-awesome-rails'
-gem 'dotenv'
-gem 'paperclip'
-gem 'jquery-ui-rails'
-gem 'bootstrap'
-gem 'jquery-turbolinks'
+gem 'dotenv' #Shim to load environment variables from .env into ENV in development.
+gem 'paperclip' #Easy upload management for ActiveRecord
+gem 'jquery-ui-rails' #This gem packages the jQuery UI assets (JavaScripts, stylesheets, and images) for the Rails asset pipeline, so you never have to download a custom package through the web interface again.
+gem 'bootstrap' #The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web. http://getbootstrap.com
 gem 'pickadate-rails'
 gem 'fullcalendar-rails'
-gem 'sdoc', group: :doc
-gem 'figaro'
-gem 'aws-sdk'
-gem 'dropzonejs-rails'
-gem 'pundit'
-gem 'gmaps4rails'
-gem 'geocoder'
-gem 'underscore-rails'
-gem 'markerclustererplus-rails'
-gem 'momentjs-rails'
-gem 'sprockets'
-gem 'kaminari'
-gem 'bootstrap4-kaminari-views'
+gem 'sdoc', group: :doc #rdoc generator html with javascript search index.
+gem 'figaro' #Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
+gem 'dropzonejs-rails' #DropzoneJS is an open source library that provides drag’n’drop file uploads with image previews
+gem 'pundit' #Pundit provides a set of helpers which guide you in leveraging regular Ruby classes and object oriented design patterns to build a simple, robust and scaleable authorization system.
+gem 'gmaps4rails' #Gmaps4rails is developed to simply create a Google Map with overlays (markers, infowindows...)
+gem 'geocoder' #Provides object geocoding (by street or IP address), reverse geocoding (coordinates to street address), distance queries for ActiveRecord and Mongoid, result caching, and more.
+gem 'markerclustererplus-rails' #MarkerClustererPlus is an enhanced Google Maps V3 implementation
+gem 'sprockets' #Sprockets is a Ruby library for compiling and serving web assets. It features declarative dependency management for JavaScript and CSS assets, as well as a powerful preprocessor pipeline that allows you to write assets in languages like CoffeeScript, Sass and SCSS.
+gem 'kaminari' #A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
+gem 'bootstrap4-kaminari-views' #bootstrap for kaminari
 gem 'pry'
 
 
