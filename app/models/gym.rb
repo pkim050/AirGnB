@@ -5,7 +5,7 @@ class Gym < ApplicationRecord
     has_many :gym_images, dependent: :destroy
     accepts_nested_attributes_for :gym_images, allow_destroy: true
 
-    validates_presence_of :title, :description, :address_1, :city, :state, :guests, :user_id, :price
+    validates_presence_of :name, :description, :address_1, :city, :state, :guests, :price
 
     geocoded_by :full_street_address
     after_validation :geocode, if: ->(obj){ obj.address_1.present? and obj.address_changed? }

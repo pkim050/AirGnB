@@ -1,0 +1,10 @@
+<h1><%= @gym.name %></h1>
+<h2><%= @gym.description %></h2>
+<h3><%= Guests: <%= @gym.guests %></h3>
+<h4><%= Price per Day: $<%= @gym.price %></h4>
+
+<% if !user_signed_in? %>
+    Please <%= link_to "SignIn", new_user_session_path %> or <%= link_to "SignUp", new_user_session_path %> to book this gym!
+<% else %>
+    <a href="<%= new_gym_path(@gym) %>">Book Gym</a>
+<% end %>

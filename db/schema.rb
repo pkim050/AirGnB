@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 2019_05_28_180516) do
   create_table "reservations", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
+    t.integer "user_id"
+    t.integer "gym_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
