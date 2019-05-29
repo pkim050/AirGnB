@@ -1,2 +1,0 @@
-class GymImagesController < ApplicationController
-end

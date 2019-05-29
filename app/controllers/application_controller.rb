@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
 
     before_action :configure_permitted_parameters, if: :devise_controller?
     
-    alias_method :current_user, :current_user
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
     def home
