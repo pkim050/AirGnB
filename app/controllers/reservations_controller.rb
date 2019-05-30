@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
+    
     def new
-        if user_signed_in? && params[:reservation_id]
+        if user_signed_in? && params[:gym_id]
             @reservation = Reservation.new(gym_id: params[:gym_id], user_id: current_user.id)
         else 
             redirect_to new_user_session_path, alert: "Please login before creating a new reservation"
@@ -9,61 +10,60 @@ class ReservationsController < ApplicationController
     end
 
     def create
-        @gym = gym.new(gym_params)
-        if @gym.save 
-            reservation = reservation.find_by(id: @gym.reservation_id)
-            reservation.gym_count += 1 
-            reservation.save
-            redirect_to user_gym_path(current_user.id, @gym)
+        @reservation = Reservation.new(reservation_params)
+        if @reservation.save 
+            gym = gym.find_by(id: @reservation.gym_id)
+            gym.save
+            redirect_to user_reservation_path(current_user.id, @reservation)
         else
-            render 'gyms/new', alert: "Invalid Data, please try again."
+            render 'reservations/new', alert: "Invalid Data, please try again."
         end
     end
     
 
     def show 
-        @gym = gym.find(params[:id])
+        @reservation = reservation.find(params[:id])
     end
 
     def index
         if !user_signed_in? 
-            redirect_to new_user_session_path, alert: "Please Sign In to see gyms or to create new gyms!"
-        elsif user_signed_in? && params[:reservation_id]
-           reservation = reservation.find(params[:reservation_id])
-           @gyms = reservation.gyms
+            redirect_to new_user_session_path, alert: "Please SignIn to see your reservations or to create new reservations!"
+        elsif user_signed_in? && params[:gym_id]
+           gym = gym.find(params[:gym_id])
+           @reservations = gym.reservations
         elsif user_signed_in?
-            @gyms = gym.gyms_by_user(current_user.id)
+            @reservations = Reservation.reservations_by_user(current_user.id)
         else 
             redirect_to '', alert: "You do not have permission to view this page!"
         end
     end
 
     def edit 
-        @gym = gym.find(params[:id])
-        if user_signed_in? && @gym.user_id == current_user.id
-            @gym
+        @reservation = reservation.find(params[:id])
+        if user_signed_in? && @reservation.user_id == current_user.id
+            @reservation
         else 
-            redirect_to '', alert: "You don't have permission to edit this gym."
+            redirect_to '', alert: "You don't have permission to edit this reservation."
         end 
     end
 
     def update 
-        @gym = gym.find(params[:id])
-        if @gym.update(gym_params)
-            redirect_to user_gym_path(current_user.id, @gym.id)
+        @reservation = reservation.find(params[:id])
+        if @reservation.update(reservation_params)
+            redirect_to user_reservation_path(current_user.id, @reservation.id)
         else 
             render 'edit'
         end
     end
 
     def destroy
-        gym.find(params[:id]).destroy
-        redirect_to user_gyms_path(current_user.id)
+        reservation.find(params[:id]).destroy
+        redirect_to user_reservations_path(current_user.id)
     end
 
     private 
 
-        def gym_params
-            params.require(:gym).permit(:name, :start_date, :end_date, :guests, :user_id, :gym_id)
-        end
+    def reservation_params
+        params.require(:reservation).permit(:name, :start_date, :end_date, :guests, :user_id, :gym_id)
+    end
 end
