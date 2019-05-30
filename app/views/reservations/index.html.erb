@@ -1,0 +1,13 @@
+<h1>Reservations</h1>
+
+<% if @reservations.empty? %>
+    <p>You don't have any gyms reserved.</p>
+<% else %>
+    <ul>
+        <% @reservations.each do |reservation| %>
+        <li><img src="<%= asset_path("#{reservation.gym.name}.jpg") %>">
+        <%= link_to "test", user_reservation_path(reservation.user_id, reservation) %>
+        <%= link_to "delete", {action: :destroy, id: reservation.id}, method: :delete, data: {confirm: "Are you sure?"} %>
+        <%= link_to "edit", edit_user_reservation_path(current_user, reservation) %>
+    </ul>
+<% end %>

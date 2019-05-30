@@ -2,7 +2,6 @@ class GymsController < ApplicationController
     #before_action :authenticate_user!, except: [:index, :show]
     
     def index
-        binding.pry
         @gyms = Gym.all
     end
 
@@ -13,6 +12,6 @@ class GymsController < ApplicationController
     private
 
     def gym_params
-        params.require(:gym).permit(:name, :description, :address_1, :address_2, :city, :state, :guests, :price)
+        params.require(:gym).permit(:name, :description, :address_1, :address_2, :city, :state, :guests, :price, :owner_id)
     end
 end

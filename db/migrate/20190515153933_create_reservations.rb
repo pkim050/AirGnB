@@ -5,6 +5,7 @@ class CreateReservations < ActiveRecord::Migration[5.2]
       t.date :end_date
       t.integer :user_id
       t.integer :gym_id
+      t.integer :guests
 
       t.timestamps
     end

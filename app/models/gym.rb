@@ -1,6 +1,6 @@
 class Gym < ApplicationRecord
-    belongs_to :user
     has_many :reservations, dependent: :destroy #Easier to destroy when needed.
+    has_many :users, through: :reservations
     has_many :available_dates, dependent: :destroy
     has_many :gym_images, dependent: :destroy
     accepts_nested_attributes_for :gym_images, allow_destroy: true
