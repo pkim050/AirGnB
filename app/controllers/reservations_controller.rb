@@ -64,6 +64,6 @@ class ReservationsController < ApplicationController
     private 
 
         def gym_params
-            params.require(:gym).permit(:name, :start_date, :end_date, :guests, :user_id, :reservation_id)
+            params.require(:gym).permit(:name, :start_date, :end_date, :guests, :user_id, :gym_id)
         end
 end

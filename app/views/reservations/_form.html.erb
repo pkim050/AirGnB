@@ -8,6 +8,12 @@
     <%= f.hidden_field :reservation_id, value: @reservation.gym_id %>
     <%= f.hidden_field :user_id, value: current_user.id %>
 
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :guests %>
+    <%= f.select(:guests, (1..@reservation.gym.guests).to_a) %>
+
     <%= f.label :start_date %>
     <%= f.date_field :start_date %>
 

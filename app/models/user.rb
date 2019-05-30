@@ -4,9 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
 
-  has_one :profile, dependent: :destroy
-  has_many :reservations, dependent: :destroy
-  has_many :gyms, through: :reservations, dependent: :destroy
+  has_many :reservations
+  has_many :gyms, through: :reservations
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

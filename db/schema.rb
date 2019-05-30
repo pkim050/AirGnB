@@ -10,29 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_28_180516) do
+ActiveRecord::Schema.define(version: 2019_05_15_153933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "available_dates", force: :cascade do |t|
-    t.date "available_date"
-    t.integer "gym_id"
-    t.boolean "booked", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "gym_images", force: :cascade do |t|
-    t.string "caption"
-    t.integer "picture_order"
-    t.string "picture_file_name"
-    t.string "picture_content_type"
-    t.integer "picture_file_size"
-    t.datetime "picture_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "gyms", force: :cascade do |t|
     t.string "name"
@@ -47,22 +28,13 @@ ActiveRecord::Schema.define(version: 2019_05_28_180516) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.string "name"
-    t.text "bio"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "profile_pic_file_name"
-    t.string "profile_pic_content_type"
-    t.integer "profile_pic_file_size"
-    t.datetime "profile_pic_updated_at"
-  end
-
   create_table "reservations", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
     t.integer "user_id"
     t.integer "gym_id"
+    t.integer "guests"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_180516) do
     t.string "uid"
     t.string "first_name"
     t.string "last_name"
+    t.string "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
