@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :gyms, only: [:index, :show] do
-    resources :reservations, only: [:index, :new, :show]
+  resources :gyms do
+    resources :reservations
   end
 
   resources :user do

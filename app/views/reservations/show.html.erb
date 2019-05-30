@@ -5,4 +5,4 @@ Guests: <%= @reservation.gym.guests %>
 Price: <%= @reservation.gym.price %>
 
 <%= link_to "delete", {action: :destroy, id: @reservation.id}, method: :delete, data: {confirm: "Are you sure?"} %>
-<%= link_to "edit", edit_user_reservation_path{current_user, @reservation} %>
+<%= link_to "edit", edit_user_reservation_path(current_user, @reservation) %>

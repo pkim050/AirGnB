@@ -1,5 +1,5 @@
 <%= form_for @reservation do |f| %>
-    <%= f.hidden_field :reservation_id, value: @reservation.gym_id %>
+    <%= f.hidden_field :gym_id, value: @reservation.gym_id %>
     <%= f.hidden_field :user_id, value: current_user.id %>
 
     <%= f.label "Name your reservation" %>
@@ -13,6 +13,6 @@
 
     <%= f.label :end_date %>
     <%= f.date_field :end_date %>
-    
+
     <%= f.submit %>
 <% end %>

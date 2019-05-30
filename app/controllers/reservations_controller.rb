@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
 
     def create
         @reservation = Reservation.new(reservation_params)
-        if @reservation.save!
+        if @reservation.save
             gym = Gym.find_by(id: @reservation.gym_id)
             gym.save
             redirect_to user_reservations_path(current_user.id, @reservation)
