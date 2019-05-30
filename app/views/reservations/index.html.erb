@@ -6,7 +6,7 @@
     <ul>
         <% @reservations.each do |reservation| %>
             <li><img src="<%= asset_path("#{reservation.gym.name}.jpg") %>"></li>
-            <li><%= link_to "test", user_reservation_path(reservation.user_id, reservation) %></li>
+            <li><%= link_to reservation.name, user_reservation_path(reservation.user_id, reservation) %></li>
             <li><%= link_to "delete", {action: :destroy, id: reservation.id}, method: :delete, data: {confirm: "Are you sure?"} %></li>
             <li><%= link_to "edit", edit_user_reservation_path(current_user, reservation) %></li>
         <% end %>

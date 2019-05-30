@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
 
-  has_many :reservations
   has_many :gyms, through: :reservations
 
   def self.from_omniauth(auth)
