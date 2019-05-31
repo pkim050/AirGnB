@@ -13,17 +13,15 @@ class GymsController < ApplicationController
         @gym = Gym.new
     end
 
-    def host_gym
+    def host_gyms
         if user_signed_in?
-            redirect_to new_gym_path
+            @gyms = Gym.all.where(owner_id: current_user.id)
+            if !@gyms
+                render :new
+            end
         else 
             redirect_to new_user_session_path, alert: "Please login before creating a new reservation"
         end
-    end
-
-    def host_gyms
-        binding.pry
-        @gyms = current_user.gyms
     end
 
     def create
@@ -33,6 +31,11 @@ class GymsController < ApplicationController
         else
             render 'gym/new', alert: "Invalid Data, please try again."
         end
+    end
+
+    def destroy
+        Gym.find(params[:id]).destroy
+        redirect_to host_gyms_path
     end
 
     private

@@ -1,8 +1,14 @@
-<% @gyms.each do |gym| %>
-    <%= link_to(gym.name, gym) %>
-    <%= gym.address_1 %>
-    <%= gym.city %>
-    <%= gym.state %>
-    <%= gym.description %>
-    <%= gym.guests %>
+<% if !@gyms %>
+    You're not hosting any gyms yet. Click <%= link_to "here", new_gym_path %> to host your gym!
+<% else %>
+    <% @gyms.each do |gym| %>
+        <%= link_to(gym.name, gym) %>
+        <%= gym.address_1 %>
+        <%= gym.city %>
+        <%= gym.state %>
+        <%= gym.description %>
+        <%= gym.guests %>
+        <%= link_to 'Edit Hosting', edit_gym_path(gym) %>
+        <%= link_to 'Delete Host', gym, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
 <% end %>
