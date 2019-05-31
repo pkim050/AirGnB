@@ -1,10 +1,8 @@
-<% if @gyms.empty? %>
-    <p>You're not hosting any gyms yet. Click <%= link_to "here", new_gym_path %></p>
-<% else %>
-    <% @gyms.each do |gym| %>
-        <%= link_to(gym.title, gym) %>
-        <%= gym.address_1 %> <%= gym.city %>
-        <%= gym.description %>
-        <%= gym.guests %>
-    <% end %>
+<% @gyms.each do |gym| %>
+    <%= link_to(gym.name, gym) %>
+    <%= gym.address_1 %>
+    <%= gym.city %>
+    <%= gym.state %>
+    <%= gym.description %>
+    <%= gym.guests %>
 <% end %>

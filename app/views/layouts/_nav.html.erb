@@ -2,8 +2,13 @@
   <div class="wrapper">
     <ul>
       <li><a class="active" href="/">AirGnB</a></li>
-      <li><%= link_to "Become a Host", host_gyms_path %></li> 
+      <% if !current_user.gyms.any? %>
+        <li><%= link_to "Become a Host", host_gym_path %></li>
+      <% else %>
+        <li><%= link_to "Your Hostings", host_gyms_path %></li> 
+      <% end %>
       <% if !user_signed_in? %>
+        <li><%= link_to "Become a Host", host_gym_path %></li>
         <li><%= link_to "Sign Up", new_user_registration_path %></li>
         <li><%= link_to "Log In", new_user_session_path %></li>
       <% else %>

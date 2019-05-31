@@ -13,12 +13,17 @@ class GymsController < ApplicationController
         @gym = Gym.new
     end
 
-    def host_gyms
+    def host_gym
         if user_signed_in?
             redirect_to new_gym_path
         else 
             redirect_to new_user_session_path, alert: "Please login before creating a new reservation"
         end
+    end
+
+    def host_gyms
+        binding.pry
+        @gyms = current_user.gyms
     end
 
     def create
