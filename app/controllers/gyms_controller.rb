@@ -9,11 +9,24 @@ class GymsController < ApplicationController
         @gym = Gym.find(params[:id])
     end
 
+    def new
+        @gym = Gym.new
+    end
+
     def host_gyms
         if user_signed_in?
-            @reservation = Gym.new(owner_id: current_user.id)
+            redirect_to new_gym_path
         else 
             redirect_to new_user_session_path, alert: "Please login before creating a new reservation"
+        end
+    end
+
+    def create
+        @gym = Gym.new(gym_params)
+        if @gym.save
+            redirect_to gym_path(@gym)
+        else
+            render 'gym/new', alert: "Invalid Data, please try again."
         end
     end
 

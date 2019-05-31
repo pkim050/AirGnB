@@ -1,18 +1,29 @@
 <%= form_for @gym do |f| %>
-    <%= f.hidden_field :gym_id, value: @reservation.gym_id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :owner_id, value: current_user.id %>
 
-    <%= f.label "Name your reservation" %>
+    <%= f.label "Gym Name" %>
     <%= f.text_field :name %>
 
-    <%= f.label "How many guests including yourself?" %>
-    <%= f.text_field :guests %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
 
-    <%= f.label :start_date %>
-    <%= f.date_field :start_date %>
+    <%= f.label "Address" %>
+    <%= f.text_area :address_1 %>
 
-    <%= f.label :end_date %>
-    <%= f.date_field :end_date %>
+    <%= f.label "Address 2 (optional)" %>
+    <%= f.text_area :address_2 %>
+
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+
+    <%= f.label "Maximum Guests" %>
+    <%= f.number_field :guests %>
+    
+    <%= f.label :price %>
+    <%= f.number_field :price %>
 
     <%= f.submit %>
 <% end %>
