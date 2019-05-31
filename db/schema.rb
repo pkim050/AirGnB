@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_05_31_145008) do
     t.string "city"
     t.string "state"
     t.integer "guests"
-    t.float "price"
+    t.string "price"
     t.integer "owner_id"
     t.string "filename"
     t.datetime "created_at", null: false

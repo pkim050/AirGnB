@@ -8,7 +8,7 @@ class CreateGyms < ActiveRecord::Migration[5.2]
       t.string :city
       t.string :state
       t.integer :guests
-      t.float :price
+      t.string :price
       t.integer :owner_id
       t.string :filename
 

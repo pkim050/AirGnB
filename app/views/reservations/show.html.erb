@@ -2,7 +2,7 @@
 
 <p>Gym Name: <%= @reservation.gym.name %></p>
 <p>Number of guests you reserved: <%= @reservation.gym.guests %></p>
-<p>Total Price: $<%= @reservation.gym.price %></p><br>
+<p>Total Price: <%= @reservation.total_price %></p><br>
 <br>
 <br>
 <% @temp = User.find(@reservation.gym.owner_id) %>

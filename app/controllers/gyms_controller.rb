@@ -35,7 +35,6 @@ class GymsController < ApplicationController
         end
         @gym.filename = uploaded_io.original_filename
         if @gym.save
-            binding.pry
             redirect_to gym_path(@gym)
         else
             render 'gym/new', alert: "Invalid Data, please try again."
