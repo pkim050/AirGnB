@@ -1,0 +1,10 @@
+<%= form_tag search_path, method: :get do %>
+    <%= text_field_tag(:search, params[:search], placeholder: "Anything") %>
+    <%= submit_tag "Search" %>
+<% end %>
+
+<ul>
+    <% @gyms.each do |gym| %>
+        <li><%= link_to gym.name, gym_path(gym) %></li>
+    <% end %>
+</ul>

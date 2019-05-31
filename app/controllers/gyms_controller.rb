@@ -1,6 +1,16 @@
 class GymsController < ApplicationController
     #before_action :authenticate_user!, except: [:index, :show]
     
+
+    def search
+        #binding.pry
+        if params[:search].nil? || params[:search] == ""
+            @gyms = Gym.all
+        else
+            @gyms = Gym.search(params[:search])
+        end
+    end
+
     def index
         @gyms = Gym.all
     end
@@ -34,11 +44,10 @@ class GymsController < ApplicationController
             file.write(uploaded_io.read)
         end
         @gym.filename = uploaded_io.original_filename
-        binding.pry
         if @gym.save
             redirect_to gym_path(@gym)
         else
-            render 'gym/new', alert: "Invalid Data, please try again."
+            redirect_to new_gym_path, alert: "Invalid Data, please try again."
         end
     end
 
