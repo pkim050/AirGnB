@@ -1,8 +1,8 @@
 <h1>Gyms</h1>
 
 <% @gyms.each do |gym| %>
-    <img src="/public/images/#{gym.filename}">
+    <img src="<%= asset_path("#{gym.filename}") %>">
     <a href='<%= gym_path(gym) %>'><p><%= gym.name %></p></a>
     <p>Maximum Guests: <%= gym.guests %></p>
-    <p>Price: <%= gym.price %>/day</p>
+    <p>Price: $<%= gym.price %>/day</p>
 <% end %>

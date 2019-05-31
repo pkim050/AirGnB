@@ -30,10 +30,11 @@ class GymsController < ApplicationController
     def create
         @gym = Gym.new(gym_params)
         uploaded_io = params[:gym][:avatar]
-        File.open(Rails.root.join('public', 'images', uploaded_io.original_filename), 'wb') do |file|
+        File.open(Rails.root.join('app', 'assets', 'images', uploaded_io.original_filename), 'wb') do |file|
             file.write(uploaded_io.read)
         end
         @gym.filename = uploaded_io.original_filename
+        binding.pry
         if @gym.save
             redirect_to gym_path(@gym)
         else

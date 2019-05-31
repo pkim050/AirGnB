@@ -10,7 +10,7 @@ class Reservation < ApplicationRecord
 
     def total_price
         if self.end_date && self.start_date
-            "$ #{self.gym.price.remove(/\D/).to_i*number_of_days}"   
+            "$#{self.gym.price.remove(/\D/).to_i*number_of_days}"   
         else 
             "Please specify a start and end date for your session to calculate a price!"
         end     

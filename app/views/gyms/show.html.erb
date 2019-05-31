@@ -1,7 +1,10 @@
-<img src="#{@gym.filename}">
+<img src="<%= asset_path("#{@gym.filename}") %>">
 <h1><%= @gym.name %></h1>
 <h2><%= @gym.description %></h2>
-<h3>Guests: <%= @gym.guests %></h3>
+Address: <h3><%= @gym.address_1 %>, 
+        <%= @gym.city %>, 
+        <%= @gym.state %></h3><br>
+<h3>Maximum Occupancy: <%= @gym.guests %></h3>
 <h4>Price per Day: $<%= @gym.price %></h4>
 
 <% if !user_signed_in? %>
