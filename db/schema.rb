@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_153933) do
     t.string "state"
     t.integer "guests"
     t.float "price"
+    t.integer "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

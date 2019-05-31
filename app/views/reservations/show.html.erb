@@ -1,8 +1,10 @@
 <h1>Your Reservation</h1>
 
-Gym: <%= @reservation.gym.name %>
-Guests: <%= @reservation.gym.guests %>
-Price: <%= @reservation.gym.price %>
+<img src="<%= asset_path("#{@reservation.gym.name}.jpg") %>">
 
-<%= link_to "delete", {action: :destroy, id: @reservation.id}, method: :delete, data: {confirm: "Are you sure?"} %>
+<p>Gym Name: <%= @reservation.gym.name %></p>
+<p>Number of guests you reserved: <%= @reservation.gym.guests %></p>
+<p>Total Price: $<%= @reservation.gym.price %></p><br>
+
+<%= link_to "delete", {action: :destroy, id: @reservation.id}, method: :delete, data: {confirm: "Are you sure?"} %><br>
 <%= link_to "edit", edit_user_reservation_path(current_user, @reservation) %>

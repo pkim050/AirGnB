@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :reservations
   end
 
+  get 'host_gyms', to: 'gyms#host_gyms'
+
   resources :reservations, only: [:create, :delete, :edit, :new, :show, :update, :index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to:"application#home"
