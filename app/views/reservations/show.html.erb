@@ -3,6 +3,13 @@
 <p>Gym Name: <%= @reservation.gym.name %></p>
 <p>Number of guests you reserved: <%= @reservation.gym.guests %></p>
 <p>Total Price: $<%= @reservation.gym.price %></p><br>
+<br>
+<br>
+<% @temp = User.find(@reservation.gym.owner_id) %>
+
+<p>Feel free to contact your host with the information below!</p>
+<h3>Host: <%= @temp.first_name %> <%= @temp.last_name %></h3><br>
+<h4>Number: <%= @temp.phone_number %><h4>
 
 <%= link_to "delete", {action: :destroy, id: @reservation.id}, method: :delete, data: {confirm: "Are you sure?"} %><br>
 <%= link_to "edit", edit_user_reservation_path(current_user, @reservation) %>

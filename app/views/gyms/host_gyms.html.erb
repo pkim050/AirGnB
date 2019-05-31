@@ -2,6 +2,7 @@
     You're not hosting any gyms yet. Click <%= link_to "here", new_gym_path %> to host your gym!
 <% else %>
     <% @gyms.each do |gym| %>
+        <img src="#{gym.filename}">
         <%= link_to(gym.name, gym) %>
         <%= gym.address_1 %>
         <%= gym.city %>
@@ -11,4 +12,5 @@
         <%= link_to 'Edit Hosting', edit_gym_path(gym) %>
         <%= link_to 'Delete Host', gym, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
+    <p>Host a <%= link_to "Gym", new_gym_path %></p>
 <% end %>

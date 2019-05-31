@@ -13,6 +13,9 @@ class GymsController < ApplicationController
         @gym = Gym.new
     end
 
+    def edit
+    end
+
     def host_gyms
         if user_signed_in?
             @gyms = Gym.all.where(owner_id: current_user.id)
@@ -20,13 +23,19 @@ class GymsController < ApplicationController
                 render :new
             end
         else 
-            redirect_to new_user_session_path, alert: "Please login before creating a new reservation"
+            redirect_to new_user_session_path, alert: "Please login before creating a new host page."
         end
     end
 
     def create
         @gym = Gym.new(gym_params)
+        uploaded_io = params[:gym][:avatar]
+        File.open(Rails.root.join('public', 'images', uploaded_io.original_filename), 'wb') do |file|
+            file.write(uploaded_io.read)
+        end
+        @gym.filename = uploaded_io.original_filename
         if @gym.save
+            binding.pry
             redirect_to gym_path(@gym)
         else
             render 'gym/new', alert: "Invalid Data, please try again."

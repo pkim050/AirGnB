@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
