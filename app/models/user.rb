@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable
 
   has_many :reservations
+  has_many :categories
   has_many :gyms, through: :reservations
   has_one_attached :avatar
 

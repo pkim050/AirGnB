@@ -10,7 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require activestorage
-//= require turbolinks
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui/widgets/datepicker
+//= require jquery-ui/widgets/sortable
+//= require pickadate/picker
+//= require pickadate/picker.date
+//= require moment
+//= require fullcalendar
+//= require tether
+//= require bootstrap-sprockets
+//= require dropzone
+//= require underscore
+//= require gmaps/google
+//= require markerclusterer
 //= require_tree .

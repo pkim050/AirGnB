@@ -1,14 +1,7 @@
 <h3>Need a gym to play basketball with your friends? Book here now!</h3>
 <%= form_tag gyms_path, method: :get do %>
     <%= text_field_tag(:address, nil, placeholder: "Where to? City") %>
-    <%= text_field_tag(:start_date, nil, placeholder: "checking in") %>
-    <%= text_field_tag(:end_date, nil, placeholder: "checking out") %>
+    <%= date_field_tag(:start_date, nil, placeholder: "checking in") %>
+    <%= date_field_tag(:end_date, nil, placeholder: "checking out") %>
     <%= submit_tag "Find Gyms", name: "commit" %>
 <% end %>
-
-<script type="text/javascript">
- $(function() {
-    $('#datepicker-start').pickadate()
-    $('#datepicker-end').pickadate()
-});
-</script>

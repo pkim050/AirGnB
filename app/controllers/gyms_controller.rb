@@ -13,10 +13,18 @@ class GymsController < ApplicationController
 
     def index
         @gyms = Gym.all
+        respond_to do |format|
+            format.html {render :index}
+            format.json {render json: @gyms, status: 201}
+        end
     end
 
     def show
-        @gym = Gym.find(params[:id])
+        @gym = Gym.find_by_id(params[:id])
+        respond_to do |format|
+            format.html {render :show}
+            format.json {render json: @gym, status: 201}
+        end
     end
 
     def new
@@ -24,6 +32,7 @@ class GymsController < ApplicationController
     end
 
     def edit
+        @gym = Gym.find_by_id(params[:id])
     end
 
     def host_gyms
@@ -33,7 +42,7 @@ class GymsController < ApplicationController
                 render :new
             end
         else 
-            redirect_to new_user_session_path, alert: "Please login before creating a new host page."
+            redirect_to new_user_session_path, alert: "Please login before creating a new host page!"
         end
     end
 
@@ -45,14 +54,20 @@ class GymsController < ApplicationController
         end
         @gym.filename = uploaded_io.original_filename
         if @gym.save
-            redirect_to gym_path(@gym)
+            respond_to do |format|
+                format.html {render :show}
+                format.json {render json: @gym, status: 201}
+            end
         else
-            redirect_to new_gym_path, alert: "Invalid Data, please try again."
+            redirect_to new_gym_path, alert: "Invalid Data, please try again!"
         end
     end
 
     def destroy
-        Gym.find(params[:id]).destroy
+        @temp = Gym.find_by_id(params[:id])
+        if @temp.present?
+            @temp.destroy
+        end
         redirect_to host_gyms_path
     end
 

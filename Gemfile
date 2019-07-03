@@ -28,17 +28,23 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
+gem 'rack-cors'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'dotenv-rails'
 gem 'font-awesome-rails'
+gem 'jquery-rails'
+gem 'active_model_serializers'
 gem 'dotenv' #Shim to load environment variables from .env into ENV in development.
 gem 'paperclip' #Easy upload management for ActiveRecord
 gem 'jquery-ui-rails' #This gem packages the jQuery UI assets (JavaScripts, stylesheets, and images) for the Rails asset pipeline, so you never have to download a custom package through the web interface again.
 gem 'bootstrap' #The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web. http://getbootstrap.com
 gem 'pickadate-rails'
 gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem 'jquery-turbolinks'
+gem 'underscore-rails'
 gem 'sdoc', group: :doc #rdoc generator html with javascript search index.
 gem 'figaro' #Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
 gem 'dropzonejs-rails' #DropzoneJS is an open source library that provides drag’n’drop file uploads with image previews
@@ -51,7 +57,9 @@ gem 'kaminari' #A Scope & Engine based, clean, powerful, customizable and sophis
 gem 'bootstrap4-kaminari-views' #bootstrap for kaminari
 gem 'pry'
 
-
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

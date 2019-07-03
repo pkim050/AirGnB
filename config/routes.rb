@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :reservations
   end
 
+  get 'user_info', to: 'users#user_info'
+
   get 'search', to: 'gyms#search', as: 'search'
 
   get 'host_gym', to: 'gyms#host_gym'

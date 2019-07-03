@@ -1,14 +1,19 @@
-<img src="<%= asset_path("#{@gym.filename}") %>">
-<h1><%= @gym.name %></h1>
-<h2><%= @gym.description %></h2>
-Address: <h3><%= @gym.address_1 %>, 
+<a href="javascript:" class="prev-gym" id="previous">Previous Gym</a> | 
+<a href="javascript:" class="next-gym" id="next">Next Gym</a><br><br>
+<div id="show-gyms">
+<img src="<%= asset_path("#{@gym.filename}") %>" class="img">
+<h1 class="title"><%= @gym.name %></h1>
+<h2 class="description"><%= @gym.description %></h2>
+Address: <h3 class="address"><%= @gym.address_1 %>, 
         <%= @gym.city %>, 
         <%= @gym.state %></h3><br>
-<h3>Maximum Occupancy: <%= @gym.guests %></h3>
-<h4>Price per Day: $<%= @gym.price %></h4>
+<h3 class="guests">Maximum Occupancy: <%= @gym.guests %></h3>
+<h4 class="price">Price per Day: $<%= @gym.price %></h4>
+</div>
+<%= hidden_field_tag "gym-id", @gym.id %>
 
 <% if !user_signed_in? %>
     Please <%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign Up", new_user_session_path %> to book this gym!
 <% else %>
-    <a href="<%= new_gym_reservation_path(@gym) %>">Book Gym</a>
+    <a href="<%= new_gym_reservation_path(@gym) %>" class="book-gym">Book Gym</a>
 <% end %>

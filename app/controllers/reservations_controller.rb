@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
         if user_signed_in? && params[:gym_id]
             @reservation = Reservation.new(gym_id: params[:gym_id], user_id: current_user.id)
         else 
-            redirect_to new_user_session_path, alert: "Please login before creating a new reservation"
+            redirect_to new_user_session_path, alert: "Please login before creating a new reservation!"
         end        
     end
 
@@ -13,22 +13,27 @@ class ReservationsController < ApplicationController
         if @reservation.save
             gym = Gym.find_by(id: @reservation.gym_id)
             gym.save
-            redirect_to user_reservations_path(current_user.id, @reservation)
+            redirect_to user_reservations_path(current_user.id)
+            #render json: current_user
         else
-            render 'reservations/new', alert: "Invalid Data, please try again."
+            render 'reservations/new', alert: "Invalid Data, please try again!"
         end
     end
     
 
     def show 
-        @reservation = Reservation.find(params[:id])
+        @reservation = Reservation.find_by_id(params[:id])
+        respond_to do |format|
+            format.html {render :show}
+            format.json {render json: @reservation, status: 201, include: ['reservation.user']}
+        end
     end
 
     def index
         if !user_signed_in? 
-            redirect_to new_user_session_path, alert: "Please SignIn to see your reservations or to create new reservations!"
+            redirect_to new_user_session_path, alert: "Please Sign In to see your reservations or to create new reservations!"
         elsif user_signed_in? && params[:gym_id]
-           gym = Gym.find(params[:gym_id])
+           gym = Gym.find_by_id(params[:gym_id])
            @reservations = gym.reservations
         elsif user_signed_in?
             @reservations = Reservation.reservations_by_user(current_user.id)
@@ -38,16 +43,16 @@ class ReservationsController < ApplicationController
     end
 
     def edit 
-        @reservation = Reservation.find(params[:id])
+        @reservation = Reservation.find_by_id(params[:id])
         if user_signed_in? && @reservation.user_id == current_user.id
             @reservation
         else 
-            redirect_to '', alert: "You don't have permission to edit this reservation."
+            redirect_to '', alert: "You don't have permission to edit this reservation!"
         end 
     end
 
     def update 
-        @reservation = Reservation.find(params[:id])
+        @reservation = Reservation.find_by_id(params[:id])
         if @reservation.update(reservation_params)
             redirect_to user_reservation_path(current_user.id, @reservation.id)
         else 
@@ -56,7 +61,10 @@ class ReservationsController < ApplicationController
     end
 
     def destroy
-        Reservation.find(params[:id]).destroy
+        @temp = Reservation.find_by_id(params[:id])
+        if @temp.present?
+            @temp.destroy
+        end
         redirect_to user_reservations_path(current_user.id)
     end
 

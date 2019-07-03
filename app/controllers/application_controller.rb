@@ -9,9 +9,13 @@ class ApplicationController < ActionController::Base
     def home
     end
 
+    def authenticate_user
+        render json: {id: current_user.id}
+    end
+
     private
     def user_not_authorized
-        flash[:alert] = "You are not authorized to perform this action."
+        flash[:alert] = "You are not authorized to perform this action!"
         redirect_to(request.referrer || root_path)
     end
 
