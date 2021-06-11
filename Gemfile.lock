@@ -168,7 +168,7 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
-      mimemagic (~> 0.3.2)
+      mimemagic (~> 0.3.9)
     markerclustererplus-rails (2.1.9)
     materialize-sass (1.0.0)
       autoprefixer-rails (>= 6.0.3)
@@ -176,9 +176,11 @@ GEM
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.0331)
-    mimemagic (0.3.3)
+    mimemagic (0.3.9)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.1)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.5.3)
     minitest (5.11.3)
     momentjs-rails (2.20.1)
       railties (>= 3.1)
@@ -187,8 +189,9 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     nio4r (2.3.1)
-    nokogiri (1.10.3)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.11.7)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     oauth2 (1.4.1)
       faraday (>= 0.8, < 0.16.0)
       jwt (>= 1.0, < 3.0)
@@ -222,6 +225,7 @@ GEM
     puma (3.12.1)
     pundit (2.0.1)
       activesupport (>= 3.0.0)
+    racc (1.5.2)
     rack (2.0.7)
     rack-cors (1.0.3)
     rack-test (1.1.0)
@@ -251,7 +255,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
-    rake (12.3.2)
+    rake (12.3.3)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -356,6 +360,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   markerclustererplus-rails
   materialize-sass
+  mimemagic
   momentjs-rails
   omniauth
   omniauth-github
@@ -384,4 +389,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
