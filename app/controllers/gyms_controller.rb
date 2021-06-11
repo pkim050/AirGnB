@@ -3,7 +3,6 @@ class GymsController < ApplicationController
     
 
     def search
-        #binding.pry
         if params[:search].nil? || params[:search] == ""
             @gyms = Gym.all
         else
@@ -33,6 +32,15 @@ class GymsController < ApplicationController
 
     def edit
         @gym = Gym.find_by_id(params[:id])
+    end
+
+    def update
+        @gym = Gym.find_by_id(params[:id])
+        if @gym.update(gym_params)
+            redirect_to host_gyms_path(current_user.id)
+        else 
+            render 'edit'
+        end
     end
 
     def host_gyms

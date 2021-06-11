@@ -56,6 +56,7 @@ gem 'sprockets' #Sprockets is a Ruby library for compiling and serving web asset
 gem 'kaminari' #A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
 gem 'bootstrap4-kaminari-views' #bootstrap for kaminari
 gem 'pry'
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

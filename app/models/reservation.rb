@@ -18,7 +18,7 @@ class Reservation < ApplicationRecord
 
     def number_of_days
         if self.end_date
-            (self.end_date.to_datetime - self.start_date.to_datetime).to_i
+            (self.end_date.to_datetime - self.start_date.to_datetime).to_i + 1
         else
             0
         end
