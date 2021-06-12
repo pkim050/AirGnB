@@ -55,7 +55,7 @@ $( document ).ready(function() {
         let gymId = parseInt(tempArr[tempLength - 1], 10)
         const indexId = e.target.id
         if (e.target.className === "gym-form") {
-            fetch(`http://localhost:3000/gyms/${indexId}.json`)
+            fetch(`${window.location.origin}/gyms/${indexId}.json`)
             .then(resp => resp.json())
             .then(data => {
                 $(`#gym-${indexId}`).html("")
@@ -64,7 +64,7 @@ $( document ).ready(function() {
                 $(`#gym-${indexId}`).append(gymHtml)
 
             })
-            fetch(`http://localhost:3000/gyms/${indexId}/reservations/new.html`)
+            fetch(`${window.location.origin}/gyms/${indexId}/reservations/new.html`)
             .then(resp => resp.text())
             .then(data => {
                 let dataArr = data.split(`<p class="alert"></p>`)
@@ -83,7 +83,7 @@ $( document ).ready(function() {
                     }
                 }
             }
-            fetch(`http://localhost:3000/gyms/${correctArr}.json`)
+            fetch(`${window.location.origin}/gyms/${correctArr}.json`)
             .then(resp => resp.json())
             .then(gym => {
                 $("#show-gyms").html("")
@@ -91,7 +91,7 @@ $( document ).ready(function() {
                 let newShow = new Gym(gym)
                 let gymHtml = newShow.show()
                 $("#show-gyms").append(gymHtml)
-                history.pushState(null, null, `http://localhost:3000/gyms/${correctArr}`)
+                history.pushState(null, null, `${window.location.origin}/gyms/${correctArr}`)
             })
         }
         if (e.target.className === "next-gym") {
@@ -105,7 +105,7 @@ $( document ).ready(function() {
                     }
                 }
             }
-            fetch(`http://localhost:3000/gyms/${correctArr}.json`)
+            fetch(`${window.location.origin}/gyms/${correctArr}.json`)
             .then(resp => resp.json())
             .then(gym => {
                 $("#show-gyms").html("")
@@ -113,7 +113,7 @@ $( document ).ready(function() {
                 let newShow = new Gym(gym)
                 let gymHtml = newShow.show()
                 $("#show-gyms").append(gymHtml)
-                history.pushState(null, null, `http://localhost:3000/gyms/${correctArr}`)
+                history.pushState(null, null, `${window.location.origin}/gyms/${correctArr}`)
             })
         }
     })
