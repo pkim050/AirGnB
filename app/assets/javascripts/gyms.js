@@ -28,6 +28,7 @@ $( document ).ready(function() {
     }
     
     Gym.prototype.show = function() {
+        debugger
         let showHtml = `
         <img src="/assets/${this.filename}" class="img">
         <h1 class="title">${this.name}</h1>
