@@ -10,5 +10,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
-# folder are already added. quick change
+# folder are already added.
 Rails.application.config.assets.precompile += %w( */assets/dropzone*.js */assets/dropzone*.css */assets/bootstrap*.js */assets/bootstrap*.css */assets/gmaps*.js */assets/gmaps*.css */assets/jquery-ui*.js */assets/jquery-ui*.css */assets/pickadate*.js */assets/pickadate*.css */assets/tether*.js */assets/tether*.css )
