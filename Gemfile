@@ -57,6 +57,7 @@ gem 'kaminari' #A Scope & Engine based, clean, powerful, customizable and sophis
 gem 'bootstrap4-kaminari-views' #bootstrap for kaminari
 gem 'pry'
 gem 'mimemagic'
+gem 'rails_12factor'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
