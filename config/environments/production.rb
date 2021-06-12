@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  air-gnb::Application.configure do
+  AirGnB::Application.configure do
     config.assets.compile = true
   end
 
