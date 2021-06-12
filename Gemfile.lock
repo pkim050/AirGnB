@@ -232,7 +232,8 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.6)
-    puma (3.12.6)
+    puma (4.3.8)
+      nio4r (~> 2.0)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
     racc (1.5.2)
@@ -385,7 +386,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   pickadate-rails
   pry
-  puma (~> 3.11)
+  puma (~> 4.3)
   pundit
   rack-cors
   rails (~> 5.2.3)
