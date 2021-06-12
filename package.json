@@ -1,5 +1,9 @@
 {
   "name": "AirGnB",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+
+  "scripts": {
+    "start": "node app/assets/config/manifest.js"
+  }
 }
