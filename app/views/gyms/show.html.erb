@@ -1,5 +1,7 @@
+<% if Gym.all.count > 1 %>
 <a href="javascript:" class="prev-gym" id="previous">Previous Gym</a> | 
 <a href="javascript:" class="next-gym" id="next">Next Gym</a><br><br>
+<% end %>
 <div id="show-gyms">
 <img src="<%= asset_path("#{@gym.filename}") %>" class="img">
 <h1 class="title"><%= @gym.name %></h1>
